@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+	<allow action="upload" groupName="admin"  groupID="01000000000000000000000000000000" resource="upload"  temporaryForcePermissions="false" type="service"/>
+</permissions>

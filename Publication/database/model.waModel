@@ -1,0 +1,136 @@
+{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Author": {
+				"panelColor": "#548DD4",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 25,
+						"Y": 20
+					}
+				}
+			},
+			"Book": {
+				"panelColor": "#996699",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 523,
+						"Y": 39
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 0,
+			"lastScriptLocation": {
+				"Author": {
+					"computed": "Author/Author-events.js"
+				}
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "Author",
+			"className": "Author",
+			"collectionName": "AuthorCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "firstName",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "lastName",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "bookCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "BookCollection",
+					"reversePath": true,
+					"path": "author"
+				},
+				{
+					"name": "fullName",
+					"kind": "calculated",
+					"matchColumn": "fullname",
+					"scope": "public",
+					"type": "string",
+					"scriptKind": "javascript",
+					"onGet": [
+						{
+							"from": "$mainModel.Author.fullName.onGet",
+							"userDefined": true
+						}
+					]
+				},
+				{
+					"name": "face",
+					"kind": "storage",
+					"scope": "public",
+					"type": "image"
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"className": "Book",
+			"collectionName": "BookCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "title",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "author",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Author",
+					"path": "Author"
+				},
+				{
+					"name": "summary",
+					"scope": "public",
+					"type": "string",
+					"kind": "storage"
+				}
+			]
+		}
+	],
+	"type": []
+}
